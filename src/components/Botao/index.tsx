@@ -1,16 +1,40 @@
-
+import React, { ReactNode } from 'react';
 import styles from './Botao.module.scss';
 
-interface BotaoProps {
-    children: string
-}
-function Botao( {children}: BotaoProps) {
 
+/*type BotaoProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+    text?: "Button" | "submit" | string;
+};
+const Botao: React.FC<BotaoProps> = ({ text, ...rest }) => {
     return (
-        <button className={styles.botao}>
-            {children}
+        <button {...rest} className={styles.botao}>
+            {text}
         </button>
-       
+    );
+};*/
 
-)}
-export default Botao; 
+
+
+
+
+
+class Botao extends React.Component
+    <{
+        type?: "button" | "submit" | "reset" | undefined
+        children: ReactNode
+    }>{
+    render() {
+        const { type = "button" } = this.props
+        return (
+            <button type={type} className={styles.botao}>
+                {this.props.children}
+            </button>
+        )
+    }
+}
+
+
+
+export default Botao;
+
+
